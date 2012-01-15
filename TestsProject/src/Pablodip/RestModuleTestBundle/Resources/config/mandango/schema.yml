@@ -1,0 +1,5 @@
+Model\PablodipRestModuleTestBundle\Article:
+    idGenerator: sequence
+    fields:
+        title:   { type: string, validation: [NotBlank: ~] }
+        content: { type: string }

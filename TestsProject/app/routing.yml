@@ -1,0 +1,3 @@
+pablodip_rest_module_test:
+    resource: "@PablodipRestModuleTestBundle/Module"
+    type:     pablodip_module
