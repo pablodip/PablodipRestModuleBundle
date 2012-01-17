@@ -106,7 +106,7 @@ abstract class TestCase extends WebTestCase
         $this->assertSame(200, $this->client->getResponse()->getStatusCode());
 
         $this->assertSame($nbArticles, $this->getNbArticles());
-        $this->molino->refreshModel($article);
+        $this->molino->refresh($article);
         $this->assertSame($originalTitle, $article->getTitle());
         $this->assertSame('bar', $article->getContent());
         $this->assertSame($article->toArray(), (array) json_decode($this->client->getResponse()->getContent()));
@@ -163,7 +163,7 @@ abstract class TestCase extends WebTestCase
         $this->assertSame(204, $this->client->getResponse()->getStatusCode());
 
         $this->assertSame($nbArticles - 1, $this->getNbArticles());
-        $this->assertNull($this->molino->createSelectQuery($this->getArticleClass())->filterEqual('id', $id)->one());
+        $this->assertNull($this->molino->createSelectQuery($this->getArticleClass())->filter('id', '==', $id)->one());
     }
 
     public function testDeleteActionNotFound()
@@ -180,10 +180,10 @@ abstract class TestCase extends WebTestCase
         $this->cleanDatabase();
 
         for ($i = 0; $i < 10; $i++) {
-            $article = $this->molino->createModel($this->getArticleClass());
+            $article = $this->molino->create($this->getArticleClass());
             $article->setTitle('Article'.$i);
             $article->setContent('content');
-            $this->molino->saveModel($article);
+            $this->molino->save($article);
         }
     }
 

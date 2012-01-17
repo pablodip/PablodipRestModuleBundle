@@ -33,7 +33,7 @@ class CreateAction extends BaseAction
 
     public function controller()
     {
-        $model = $this->getModule()->getMolino()->createModel($this->getModule()->getOption('modelClass'));
+        $model = $this->getModule()->getMolino()->create($this->getModule()->getOption('modelClass'));
 
         $data = $this->get('request')->request->all();
         if ($this->getModule()->hasExtraFields($data)) {
@@ -47,7 +47,7 @@ class CreateAction extends BaseAction
             return $this->getModule()->createValidationFailsErrorResponse($errors);
         }
 
-        $this->getModule()->getMolino()->saveModel($model);
+        $this->getModule()->getMolino()->save($model);
 
         return $this->getModule()->getExtension('serializer')->createSerializedResponse($model);
     }

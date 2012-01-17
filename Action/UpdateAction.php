@@ -50,7 +50,7 @@ class UpdateAction extends BaseAction
             return $this->getModule()->createValidationFailsErrorResponse($errors);
         }
 
-        $this->getModule()->getMolino()->saveModel($model);
+        $this->getModule()->getMolino()->save($model);
 
         return $this->getModule()->getExtension('serializer')->createSerializedResponse($model);
     }

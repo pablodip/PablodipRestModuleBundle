@@ -38,7 +38,7 @@ class DeleteAction extends BaseAction
             return $this->getModule()->getExtension('serializer')->createSerializedNotFoundResponse();
         }
 
-        $this->getModule()->getMolino()->deleteModel($model);
+        $this->getModule()->getMolino()->delete($model);
 
         return $this->getModule()->getExtension('serializer')->createSerializedResponse('', 204);
     }
