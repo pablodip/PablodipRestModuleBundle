@@ -11,14 +11,14 @@
 
 namespace Pablodip\RestModuleBundle\Action;
 
-use Pablodip\ModuleBundle\Action\BaseAction;
+use Pablodip\ModuleBundle\Action\BaseRouteAction;
 
 /**
  * ListAction.
  *
  * @author Pablo Díez <pablodip@gmail.com>
  */
-class ListAction extends BaseAction
+class ListAction extends BaseRouteAction
 {
     /**
      * {@inheritdoc}
@@ -33,7 +33,7 @@ class ListAction extends BaseAction
 
     public function controller()
     {
-        $models = $this->getModule()->getMolino()->createSelectQuery($this->getModule()->getOption('modelClass'))->all();
+        $models = $this->getMolino()->createSelectQuery($this->getModule()->getOption('model_class'))->all();
 
         return $this->getModule()->getExtension('serializer')->createSerializedResponse($models);
     }

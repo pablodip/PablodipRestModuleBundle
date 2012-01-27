@@ -11,9 +11,9 @@ class DoctrineORMArticleRestModule extends DoctrineORMRestModule
         $this
             ->setRouteNamePrefix('doctrine_orm_articles_')
             ->setRoutePatternPrefix('/doctrine/orm/articles')
-            ->setOption('modelClass', 'Pablodip\RestModuleTestBundle\Entity\Article')
+            ->setOption('model_class', 'Pablodip\RestModuleTestBundle\Entity\Article')
         ;
-        $this->getOption('modelFields')->add(array(
+        $this->getOption('model_fields')->add(array(
             'title'   => array(),
             'content' => array(),
         ));

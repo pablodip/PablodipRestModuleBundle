@@ -11,14 +11,14 @@
 
 namespace Pablodip\RestModuleBundle\Action;
 
-use Pablodip\ModuleBundle\Action\BaseAction;
+use Pablodip\ModuleBundle\Action\BaseRouteAction;
 
 /**
  * ShowAction.
  *
  * @author Pablo Díez <pablodip@gmail.com>
  */
-class ShowAction extends BaseAction
+class ShowAction extends BaseRouteAction
 {
     /**
      * {@inheritdoc}
@@ -33,7 +33,7 @@ class ShowAction extends BaseAction
 
     public function controller($id)
     {
-        $model = $this->getModule()->getMolino()->findOneById($this->getModule()->getOption('modelClass'), $id);
+        $model = $this->getMolino()->findOneById($this->getModule()->getOption('model_class'), $id);
         if (!$model) {
             return $this->getModule()->getExtension('serializer')->createSerializedNotFoundResponse();
         }

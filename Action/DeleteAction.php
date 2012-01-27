@@ -11,14 +11,14 @@
 
 namespace Pablodip\RestModuleBundle\Action;
 
-use Pablodip\ModuleBundle\Action\BaseAction;
+use Pablodip\ModuleBundle\Action\BaseRouteAction;
 
 /**
  * DeleteAction.
  *
  * @author Pablo Díez <pablodip@gmail.com>
  */
-class DeleteAction extends BaseAction
+class DeleteAction extends BaseRouteAction
 {
     /**
      * {@inheritdoc}
@@ -33,12 +33,12 @@ class DeleteAction extends BaseAction
 
     public function controller($id)
     {
-        $model = $this->getModule()->getMolino()->findOneById($this->getModule()->getOption('modelClass'), $id);
+        $model = $this->getMolino()->findOneById($this->getModule()->getOption('model_class'), $id);
         if (!$model) {
             return $this->getModule()->getExtension('serializer')->createSerializedNotFoundResponse();
         }
 
-        $this->getModule()->getMolino()->delete($model);
+        $this->getMolino()->delete($model);
 
         return $this->getModule()->getExtension('serializer')->createSerializedResponse('', 204);
     }

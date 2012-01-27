@@ -48,14 +48,6 @@ abstract class RestModule extends Module
     abstract protected function registerMolinoExtension();
 
     /**
-     * Shortcut to get the molino.
-     */
-    public function getMolino()
-    {
-        return $this->getExtension('molino')->getMolino();
-    }
-
-    /**
      * Returns the serializer extension.
      *
      * @return BaseSerializerExtension A serializer extension.
@@ -95,7 +87,7 @@ abstract class RestModule extends Module
      */
     public function hasExtraFields(array $data)
     {
-        return (Boolean) array_diff(array_keys($data), $this->getOption('modelFields')->keys());
+        return (Boolean) array_diff(array_keys($data), $this->getOption('model_fields')->keys());
     }
 
     /**

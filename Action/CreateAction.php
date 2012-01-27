@@ -11,14 +11,14 @@
 
 namespace Pablodip\RestModuleBundle\Action;
 
-use Pablodip\ModuleBundle\Action\BaseAction;
+use Pablodip\ModuleBundle\Action\BaseRouteAction;
 
 /**
  * CreateAction.
  *
  * @author Pablo Díez <pablodip@gmail.com>
  */
-class CreateAction extends BaseAction
+class CreateAction extends BaseRouteAction
 {
     /**
      * {@inheritdoc}
@@ -33,7 +33,7 @@ class CreateAction extends BaseAction
 
     public function controller()
     {
-        $model = $this->getModule()->getMolino()->create($this->getModule()->getOption('modelClass'));
+        $model = $this->getMolino()->create($this->getModule()->getOption('model_class'));
 
         $data = $this->get('request')->request->all();
         if ($this->getModule()->hasExtraFields($data)) {
@@ -47,7 +47,7 @@ class CreateAction extends BaseAction
             return $this->getModule()->createValidationFailsErrorResponse($errors);
         }
 
-        $this->getModule()->getMolino()->save($model);
+        $this->getMolino()->save($model);
 
         return $this->getModule()->getExtension('serializer')->createSerializedResponse($model);
     }

@@ -11,9 +11,9 @@ class MandangoArticleRestModule extends MandangoRestModule
         $this
             ->setRouteNamePrefix('mandango_articles_')
             ->setRoutePatternPrefix('/mandango/articles')
-            ->setOption('modelClass', 'Model\PablodipRestModuleTestBundle\Article')
+            ->setOption('model_class', 'Model\PablodipRestModuleTestBundle\Article')
         ;
-        $this->getOption('modelFields')->add(array(
+        $this->getOption('model_fields')->add(array(
             'title'   => array(),
             'content' => array(),
         ));
